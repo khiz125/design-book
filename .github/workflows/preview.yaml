@@ -16,19 +16,20 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
       - name: cache node_modules
         id: node_modules_cache_id
         uses: actions/cache@v2
         with:
           path: |
-            node_modules
-        key: node-v${{ matrix.node-version }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-      - run: npm i
-      - run: npm run test
+            **/node_modules
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
+
+      - run: yarn install
+      - run: yarn test
 
   Deploy-Preview:
     needs: [Test]

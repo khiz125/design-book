@@ -12,7 +12,6 @@ on:
     branches-ignore: [ main ]
 
 jobs:
-
   Test:
     runs-on: ubuntu-latest
     steps:

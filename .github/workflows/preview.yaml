@@ -12,6 +12,7 @@ on:
     branches-ignore: [ main ]
 
 jobs:
+
   Test:
     runs-on: ubuntu-latest
     steps:
@@ -19,9 +20,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-        -run: npm ci
-        -run: npm run test
-
+      - run: npm ci
+      - run: npm run test
 
   Deploy-Preview:
   needs: [Test]

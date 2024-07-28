@@ -20,10 +20,10 @@ jobs:
         run: npm install --global vercel
       
       - name: Pull Vercel Enviroment Information
-        run: vercel pull --yes --enviroment=preview --token=${{ sercrets.VERCEL_TOKEN }}
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: vercel build --token=${{ sercrets.VERCEL_TOKEN }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts
-        run: vercel deploy --prebuilt --token=${{ sercrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

@@ -1,11 +1,16 @@
 import React from "react";
+import Header from "./components/Header";
+import Card from "./components/Card";
+import InvitationCard from "./components/designPages/InvitationCard";
 
 const Home = () => {
   return (
-    <main className="flex items-center justify-between">
-      <div>
+    <main className="flex flex-col justify-center w-full">
+      <Header />
+      <p>
         hello world
-      </div>
+      </p>
+      <Card><InvitationCard /></Card>
     </main>
   );
 }

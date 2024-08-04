@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { FC } from 'react';
 
 type Props = {
-  children: React.ReactNode
+  component: React.ReactNode;
 }
 
-const Card = ({ children }: Props) => {
+const Card: FC<Props> = ({ component }) => {
   return (
-    <div className='w-[300px] border border-gray-400 h-[480px]'>{children}</div>
+    <div className='w-[300px] border border-gray-400 h-[480px]'>{component}</div>
   )
 }
 

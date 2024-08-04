@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from "@testing-library/react";
-import Home from "@/src/app/page.tsx";
+import Home from "@/app/page";
 
 it("should have Docs text", () => {
   render(<Home />);

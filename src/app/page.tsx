@@ -16,7 +16,7 @@ const Home = () => {
       <p>
         hello world
       </p>
-      <div className="flex flex-wrap gap-4">
+      <div className="grid items-center auto-fit-[20rem] gap-4">
         {components.map((component, index) => (
           <Card key={index} component={component} />
         ))}

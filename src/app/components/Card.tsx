@@ -1,12 +1,16 @@
-import React, { FC } from 'react';
+import Link from 'next/link';
+import React, { FC, ReactNode } from 'react';
 
 type Props = {
-  component: React.ReactNode;
+  href: string;
+  children: ReactNode;
 }
 
-const Card: FC<Props> = ({ component }) => {
+const Card: FC<Props> = ({ href, children }) => {
   return (
-    <div className='w-[300px] border border-gray-400 h-[480px]'>{component}</div>
+    <Link href={href}>
+      <div className='w-[300px] border border-gray-400 h-[480px]'>{children}</div>
+    </Link>
   )
 }
 

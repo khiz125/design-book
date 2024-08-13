@@ -9,25 +9,23 @@ type PageProps = {
 }
 
 
-const Page: FC<PageProps> = ({params, searchParams}) => {
+const Page: FC<PageProps> = ({ params }) => {
   // const params = useParams();
   const { id } = params;
-  console.log("params", params)
-  console.log("searchParams", searchParams)
 
   let content;
   switch (id) {
-    case 'InvitationCard':
+    case 'invitation-card':
       content = (
         <InvitationCard />
       );
       break;
-    case 'AnimatedBorder':
+    case 'animated-border':
       content = (
         <AnimatedBorder />
       );
       break;
-    case 'UsingColors':
+    case 'using-colors':
       content = (
         <UsingColors />
       );

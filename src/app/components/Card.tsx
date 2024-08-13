@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, Suspense } from 'react';
+import Loading from '../designbook/[id]/loading';
 
 type Props = {
   href: string;
@@ -8,10 +9,12 @@ type Props = {
 
 const Card: FC<Props> = ({ href, children }) => {
   return (
-    <Link href={href}>
-      <div className='w-[300px] border border-gray-400 h-[480px]'>{children}</div>
-    </Link>
+    <Suspense fallback={<Loading />}>
+      <Link href={href}>
+        <div className='border border-gray-400 w-full min-w-[300px] h-[400px]'>{children}</div>
+      </Link>
+    </Suspense>
   )
 }
 
-export default Card
+export default Card;

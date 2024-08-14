@@ -4,4 +4,17 @@
 *:before,
 *:after {
 	box-sizing: border-box;
+  margin: 0;
+  height: 100%;
+}
+
+:root {
+  --clip-triangle-top: polygon(0.5em 0, 1em 1em, 0 1em);
+  --clip-triangle-bottom: polygon(0 0, 1em 0, 0.5em 1em);
+  --clip-triangle-right: polygon(0 0, 1em 5em, 0 1em);
+  --clip-triangle-left: polygon(0 5em, 1em 0, 1em 1em);
+  --clip-triangle-lower-left: polygon(0 0, 1em 1em, 0 1em);
+  --clip-triangle-upper-left: polygon(0 0, 1em 0, 0 1em);
+  --clip-triangle-lower-right: polygon(1em 0, 1em 1em, 0 1em);
+  --clip-triangle-upper-right: polygon(0 0, 1em 0, 1em 1em);
 }

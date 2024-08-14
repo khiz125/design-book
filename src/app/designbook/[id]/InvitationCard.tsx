@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export const InvitationCard = () => {
+const InvitationCard = () => {
   return (
     <section className="relative bg-[#4682B4] w-full h-full">
       <div className="absolute top-10 left-4 bg-[#FFCC00] w-11/12 h-1/3">
@@ -22,3 +22,5 @@ export const InvitationCard = () => {
     </section>
   )
 }
+
+export default InvitationCard;

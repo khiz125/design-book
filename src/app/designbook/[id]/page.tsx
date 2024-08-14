@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import { InvitationCard } from './InvitationCard';
-import { AnimatedBorder } from './AnimatedBorder';
-import { UsingColors } from './UsingColors';
+import InvitationCard from './InvitationCard';
+import AnimatedBorder from './AnimatedBorder';
+import UsingColors from './UsingColors';
+import UnderConstruction from './UnderConstruction';
 
 type PageProps = {
   params: { id: string };
@@ -30,6 +31,11 @@ const Page: FC<PageProps> = ({ params }) => {
         <UsingColors />
       );
       break;
+      case 'under-construction':
+        content = (
+          <UnderConstruction />
+        );
+        break;
     default:
       content = (
         <div className='flex items-center justify-center'>

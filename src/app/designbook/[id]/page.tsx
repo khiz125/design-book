@@ -11,7 +11,6 @@ type PageProps = {
 
 
 const Page: FC<PageProps> = ({ params }) => {
-  // const params = useParams();
   const { id } = params;
 
   let content;

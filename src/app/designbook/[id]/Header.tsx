@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <nav>
+    <nav className='w-full h-5'>
       <Link href="/">back to Home</Link>
     </nav>
   )

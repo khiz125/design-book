@@ -11,7 +11,7 @@ const Card: FC<Props> = ({ href, children }) => {
   return (
     <Suspense fallback={<Loading />}>
       <Link href={href}>
-        <div className='border border-gray-400 w-full min-w-[300px] h-[400px]'>{children}</div>
+        <div className='w-full min-w-[300px] h-[400px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]'>{children}</div>
       </Link>
     </Suspense>
   )

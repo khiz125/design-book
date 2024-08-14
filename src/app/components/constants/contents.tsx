@@ -13,4 +13,4 @@ export const PAGE_CONTENTS:PageContents[] = [
 	{ id: "invitation-card", title: "Invitation Card", component: <InvitationCard /> },
 	{ id: "animated-border", title: "Animated Border", component: <AnimatedBorder /> },
 	{ id: "using-colors", title: "Using Colors", component: <UsingColors /> },
-] as const;
+];

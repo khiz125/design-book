@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import './tailwind.css'
 import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="flex">
-        <Sidebar />
-        <main className="flex justify-center bg-gray-50 w-full">
-          {children}
-        </main>
+      <body>
+        <div className="flex">
+          <Sidebar />
+          <main className="flex justify-center bg-gray-50 w-full">
+            {children}
+          </main>
+        </div>
+        <Footer />
       </body>
     </html>
   );

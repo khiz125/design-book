@@ -2,11 +2,11 @@ import Link from 'next/link';
 import Image from "next/image";
 import React from 'react';
 
-const Sidebar = () => {
+const Footer = () => {
   return (
-    <nav className='bg-white border-r border-gray-300 lg:w-48 px-3 max-[580px]:hidden '>
-      <section className='flex flex-col items-center w-full h-full my-20'>
-        <Link href="/" className='w-full hover:bg-slate-200 rounded-md'>
+    <nav className='bg-white border-t border-gray-300 w-full min-[580px]:hidden fixed bottom-0'>
+      <section className='flex items-center m-2 px-2'>
+        <Link href="/" className='hover:bg-slate-200 rounded-md'>
           <div className='flex items-center w-full lg:gap-2'>
             <figure className='p-2'>
               <Image
@@ -17,7 +17,6 @@ const Sidebar = () => {
                 priority
               />
             </figure>
-            <p className='hidden lg:contents'>Home</p>
           </div>
         </Link>
       </section>
@@ -25,4 +24,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar;
+export default Footer;

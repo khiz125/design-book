@@ -6,13 +6,13 @@ import { PAGE_CONTENTS } from "./components/constants/contents";
 const Home = () => {
   return (
       <Suspense fallback={<Loading />}>
-        <section className="flex flex-col justify-center">
-          <div className="flex justify-center items-center w-full h-[160px] my-10 py-10">
+        <section className="h-full">
+          <div className="flex justify-center items-center h-[160px] py-10">
             hello world
           </div>
           <div className="mx-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 min-[2000px]:grid-cols-5 gap-5 justify-items-center items-center">
-            {PAGE_CONTENTS.map((page) => (
-              <div key={page.id} className="w-full h-full flex flex-col justify-center items-center " >
+            {PAGE_CONTENTS.map((page, i) => (
+              <div key={i} className="h-full flex flex-col justify-center items-center " >
                 <Card href={`/designbook/${page.id}`}>
                   {page.component}
                 </Card>

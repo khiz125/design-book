@@ -15,7 +15,10 @@ const config: Config = {
       },
       animation: {
         "border-spin": "border-spin 6s linear infinite"
-      }
+      },
+      screens: {
+        'xs': '580px',
+      },
     },
 	},
 	plugins: [

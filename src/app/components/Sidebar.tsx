@@ -4,10 +4,10 @@ import React from 'react';
 
 const Sidebar = () => {
   return (
-    <nav className='bg-white border-r border-gray-300 lg:w-48 px-3 max-[580px]:hidden '>
-      <section className='flex flex-col items-center w-full h-full my-20'>
-        <Link href="/" className='w-full hover:bg-slate-200 rounded-md'>
-          <div className='flex items-center w-full lg:gap-2'>
+    <aside className='flex h-full py-20 px-2 fixed border-r border-gray-400 lg:w-[140px] max-[580px]:hidden'>
+      <section className=''>
+        <Link href="/" className='flex items-center hover:bg-slate-200 rounded-md w-full'>
+          <div className='flex items-center justify-center w-full lg:gap-2'>
             <figure className='p-2'>
               <Image
                 src="/images/icons/book_blue.png"
@@ -17,11 +17,11 @@ const Sidebar = () => {
                 priority
               />
             </figure>
-            <p className='hidden lg:contents'>Home</p>
+            <p className='max-[1024px]:hidden'>Home</p>
           </div>
         </Link>
       </section>
-    </nav>
+    </aside>
   )
 }
 

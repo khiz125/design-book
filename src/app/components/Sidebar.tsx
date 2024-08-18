@@ -4,10 +4,10 @@ import React from 'react';
 
 const Sidebar = () => {
   return (
-    <aside className='flex h-full py-20 px-2 fixed border-r border-gray-400 lg:w-[140px] max-[580px]:hidden'>
-      <section className=''>
+    <aside className='h-full py-20 px-2 fixed border-r border-gray-400 lg:w-[140px] max-[580px]:hidden'>
+      <section className='w-full'>
         <Link href="/" className='flex items-center hover:bg-slate-200 rounded-md w-full'>
-          <div className='flex items-center justify-center w-full lg:gap-2'>
+          <div className='flex items-center w-full lg:gap-2'>
             <figure className='p-2'>
               <Image
                 src="/images/icons/book_blue.png"

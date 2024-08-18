@@ -5,7 +5,18 @@ import plugin from "tailwindcss/plugin";
 const config: Config = {
 	content: ["./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
-		extend: {},
+		extend: {
+      keyframes: {
+        "border-spin": {
+          "100%": {
+            transform: "rotate(360deg)",
+          },
+        },
+      },
+      animation: {
+        "border-spin": "border-spin 6s linear infinite"
+      }
+    },
 	},
 	plugins: [
     plugin(function ({ matchUtilities, theme }) {

@@ -4,7 +4,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <nav className='bg-white border-t border-gray-300 w-full min-[580px]:hidden fixed bottom-0'>
+    <footer className='bg-white border-t border-gray-300 w-full min-[580px]:hidden sticky bottom-0'>
       <section className='flex items-center m-2 px-2'>
         <Link href="/" className='hover:bg-slate-200 rounded-md'>
           <div className='flex items-center w-full lg:gap-2'>
@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
         </Link>
       </section>
-    </nav>
+    </footer>
   )
 }
 

@@ -15,5 +15,5 @@ export const PAGE_CONTENTS:PageContents[] = [
 	{ id: "animated-border", title: "Animated Border", component: <AnimatedBorder /> },
 	{ id: "using-colors", title: "Using Colors", component: <UsingColors /> },
   { id: "under-construction", title: "Under Construction...", component: <UnderConstruction /> },
-  { id: "using-colors", title: "Using Colors", component: <UnderConstruction /> },
+  { id: "under-construction", title: "Using Colors", component: <UnderConstruction /> },
 ];

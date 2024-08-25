@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from "next/image";
 import React from 'react';
+import { gentiumBookPlus } from "../../styles/fonts";
 
 const Sidebar = () => {
   return (
@@ -17,7 +18,7 @@ const Sidebar = () => {
                 priority
               />
             </figure>
-            <p className='max-[1024px]:hidden'>Home</p>
+            <p className={`${gentiumBookPlus.variable} font-gentiumBookPlus text-lg max-[1024px]:hidden`}>Home</p>
           </div>
         </Link>
       </section>

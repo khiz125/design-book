@@ -20,4 +20,21 @@ html, body {
   --clip-triangle-upper-left: polygon(0 0, 1em 0, 0 1em);
   --clip-triangle-lower-right: polygon(1em 0, 1em 1em, 0 1em);
   --clip-triangle-upper-right: polygon(0 0, 1em 0, 1em 1em);
+  /* fonts */
+  --font-lora: 'Lora', sans-serif;
+  --font-new-tegomin: 'New Tegomin', serif;
+  --font-ruluko: 'Ruluko', sans-serif;
+  --font-gentium-book-plus: 'Gentium Book Plus', serif;
+  --font-asset: 'Asset', sans-serif;
+  --font-mystery-quest: 'Mystery Quest', cursive;
+  --font-stalemate: 'Stalemate', cursive;
+  --font-fontdiner-swanky: 'Fontdiner Swanky', cursive;
+  --font-mclaren: 'McLaren', sans-serif;
+  --font-im-fell-english-sc: 'IM Fell English SC', serif;
+  --font-libre-franklin: 'Libre Franklin', sans-serif;
+  --font-merriweather-sans: 'Merriweather Sans', sans-serif;
+  --font-alegreya: 'Alegreya', serif;
+  --font-dancing-script: 'Dancing Script', cursive;
+  --font-anton: 'Anton', sans-serif;
+  --font-francois-one: 'Francois One', sans-serif;
 }

@@ -19,6 +19,25 @@ const config: Config = {
       screens: {
         'xs': '580px',
       },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        lora: ['var(--font-lora)', 'sans-serif'],
+        newTegomin: ['var(--font-new-tegomin)', 'serif'],
+        ruluko: ['var(--font-ruluko)', 'sans-serif'],
+        gentiumBookPlus: ['var(--font-gentium-book-plus)', 'serif'],
+        asset: ['var(--font-asset)', 'sans-serif'],
+        mysteryQuest: ['var(--font-mystery-quest)', 'cursive'],
+        stalemate: ['var(--font-stalemate)', 'cursive'],
+        fontdinerSwanky: ['var(--font-fontdiner-swanky)', 'cursive'],
+        mcLaren: ['var(--font-mclaren)', 'sans-serif'],
+        imFellEnglishSC: ['var(--font-im-fell-english-sc)', 'serif'],
+        libreFranklin: ['var(--font-libre-franklin)', 'sans-serif'],
+        merriweatherSans: ['var(--font-merriweather-sans)', 'sans-serif'],
+        alegreya: ['var(--font-alegreya)', 'serif'],
+        dancingScript: ['var(--font-dancing-script)', 'cursive'],
+        anton: ['var(--font-anton)', 'sans-serif'],
+        francoisOne: ['var(--font-francois-one)', 'sans-serif'],
+      }
     },
 	},
 	plugins: [

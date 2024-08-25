@@ -19,7 +19,7 @@ import {
   dancingScript,
   anton,
   francoisOne
-} from "@/fonts";
+} from "../../../styles/fonts";
 
 const InvitationCard = () => {
   const [loading, setLoading] = useState(true);

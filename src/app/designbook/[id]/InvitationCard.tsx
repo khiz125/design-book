@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   lora,
@@ -22,14 +22,12 @@ import {
 } from "../../../styles/fonts";
 
 const InvitationCard = () => {
-  const [loading, setLoading] = useState(true);
   const [parentWidth, setParentWidth] = useState(0);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (ref.current) {
       setParentWidth(ref.current.offsetWidth);
-      setLoading(false);
     }
   },[])
   return (
@@ -47,7 +45,7 @@ const InvitationCard = () => {
         </figure>
       </div>
       <div ref={ref} className="absolute top-4 left-10 bg-[#333] w-1/4 h-4/5 opacity-90">
-        <p className={`text-white ${!loading ? parentWidth > 100 ? "px-10 text-[120px]" : "px-3 text-[42px]" : "text-[42px]"}`}>It's a wild tea party!</p>
+        <p className={`text-white ${parentWidth > 100 ? "px-10 text-[120px]" : "px-3 text-[42px]"}`}>It's a wild tea party!</p>
       </div>
     </section>
   )

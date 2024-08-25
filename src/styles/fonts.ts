@@ -23,6 +23,7 @@ export const inter = Inter({
 	variable: "--font-inter",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const lora = Lora({
@@ -30,6 +31,7 @@ export const lora = Lora({
 	variable: "--font-lora",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const newTegomin = New_Tegomin({
@@ -37,6 +39,7 @@ export const newTegomin = New_Tegomin({
 	variable: "--font-new-tegomin",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const ruluko = Ruluko({
@@ -44,6 +47,7 @@ export const ruluko = Ruluko({
 	variable: "--font-ruluko",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const gentiumBookPlus = Gentium_Book_Plus({
@@ -51,6 +55,7 @@ export const gentiumBookPlus = Gentium_Book_Plus({
 	variable: "--font-gentium-book-plus",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const asset = Asset({
@@ -58,6 +63,7 @@ export const asset = Asset({
 	variable: "--font-asset",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const mysteryQuest = Mystery_Quest({
@@ -65,6 +71,7 @@ export const mysteryQuest = Mystery_Quest({
 	variable: "--font-mystery-quest",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const stalemate = Stalemate({
@@ -72,6 +79,7 @@ export const stalemate = Stalemate({
 	variable: "--font-stalemate",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const fontdinerSwanky = Fontdiner_Swanky({
@@ -79,6 +87,7 @@ export const fontdinerSwanky = Fontdiner_Swanky({
 	variable: "--font-fontdiner-swanky",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const mcLaren = McLaren({
@@ -86,6 +95,7 @@ export const mcLaren = McLaren({
 	variable: "--font-mclaren",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const imFellEnglishSC = IM_Fell_English_SC({
@@ -93,6 +103,7 @@ export const imFellEnglishSC = IM_Fell_English_SC({
 	variable: "--font-im-fell-english-sc",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const libreFranklin = Libre_Franklin({
@@ -100,6 +111,7 @@ export const libreFranklin = Libre_Franklin({
 	variable: "--font-libre-franklin",
 	weight: ["100", "300", "400", "600", "700", "800", "900"],
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const merriweatherSans = Merriweather_Sans({
@@ -107,6 +119,7 @@ export const merriweatherSans = Merriweather_Sans({
 	variable: "--font-merriweather-sans",
 	weight: ["300", "400", "500", "600", "700", "800"],
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const alegreya = Alegreya({
@@ -114,6 +127,7 @@ export const alegreya = Alegreya({
 	variable: "--font-alegreya",
 	weight: ["400", "700", "900"],
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const dancingScript = Dancing_Script({
@@ -121,6 +135,7 @@ export const dancingScript = Dancing_Script({
 	variable: "--font-dancing-script",
 	weight: ["400", "500", "600", "700"],
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const anton = Anton({
@@ -128,6 +143,7 @@ export const anton = Anton({
 	variable: "--font-anton",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });
 
 export const francoisOne = Francois_One({
@@ -135,4 +151,5 @@ export const francoisOne = Francois_One({
 	variable: "--font-francois-one",
 	weight: "400",
 	display: "swap",
+  adjustFontFallback: false,
 });

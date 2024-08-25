@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from "next/image";
 import React from 'react';
-import { lora, gentiumBookPlus } from "@/fonts"
+import { gentiumBookPlus } from "../../styles/fonts";
 
 const Sidebar = () => {
   return (

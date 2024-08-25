@@ -23,7 +23,7 @@ import {
 
 const InvitationCard = () => {
   const [loading, setLoading] = useState(true);
-  const [parentWidth, setParentWidth] = useState(0)
+  const [parentWidth, setParentWidth] = useState(0);
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

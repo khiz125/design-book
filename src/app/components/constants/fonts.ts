@@ -1,4 +1,5 @@
 import {
+  inter,
   lora,
   newTegomin,
   ruluko,
@@ -18,6 +19,10 @@ import {
 } from "../../../styles/fonts";
 
 export const FONTS = [
+  {
+    name: "inter",
+    font: inter
+  },
   {
     name: "lora",
     font: lora

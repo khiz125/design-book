@@ -10,7 +10,11 @@ const InvitationCard = () => {
   const fonts = FONTS;
   const [index, setIndex] = useState(7);
 
-
+  const animateSpins = {
+    1: "animate-[spin_1.0s_linear_infinite] [clip-path:polygon(75%_0%,100%_100%,0%_100%)]",
+    1.5: "animate-[spin_1.5s_linear_infinite] [clip-path:polygon(75%_0%,100%_100%,0%_100%)]",
+    2: "animate-[spin_2.0s_linear_infinite] [clip-path:polygon(75%_0%,100%_100%,0%_100%)]",
+  }
   const ref = useRef<HTMLDivElement | null>(null);
   useLayoutEffect(() => {
     if (ref.current) {
@@ -47,10 +51,31 @@ const InvitationCard = () => {
           </figure>
         </div>
         <div className="absolute top-4 left-10 bg-[#333] w-2/7 h-4/5 opacity-90">
-          <p className={`text-white ${parentWidth > 310 ? "px-10 text-[100px]" : "px-3 text-[42px]"}`}>
+          <p className={`
+            text-white ${parentWidth > 310 && index === 7 ? "p-10 text-[120px] tracking-wider"
+              : parentWidth > 310 && index === 5 ? "p-10 text-5xl leading-[10rem]"
+              : parentWidth > 310 ? "p-10 text-8xl leading-[10rem]"
+              : "px-3 text-[42px]"}`}>
             It's <br />a <br />wild <br />tea <br />party!
           </p>
         </div>
+        <div className={`absolute ${parentWidth > 310 ? "bottom-[30rem] right-24" : "bottom-12 right-8"}`}>
+          <p className={`text-white ${parentWidth > 310 && index === 7 ? "p-10 text-8xl" 
+            : parentWidth > 310 && index === 5 ? "p-10 text-2xl leading-[100px]" 
+            : parentWidth > 310 ? "p-10 text-5xl" 
+            : "px-3 text-[21px]"}`}>
+            please join us <br />in the afternoon <br />wear your hat!
+          </p>
+        </div>
+        <div className={`absolute bg-[#4682B4] ${animateSpins["1.5"]} ${parentWidth > 310 ? "top-36 right-24 w-5 h-5" : "top-12 right-8 w-2 h-2"}`}></div>
+        <div className={`absolute bg-[#4682B4] ${animateSpins["2"]} ${parentWidth > 310 ? "top-[27rem] left-[30rem] w-10 h-5" : "top-16 left-36 w-5 h-2"}`}></div>
+        <div className={`absolute bg-[#4682B4] ${animateSpins["1"]} ${parentWidth > 310 ? "top-72 left-64 w-5 h-5" : "top-36 left-6 w-2 h-2"}`}></div>
+        <div className={`absolute bg-[#FFCC00] ${animateSpins["1.5"]} ${parentWidth > 310 ? "top-14 left-64 w-5 h-5" : "top-12 left-24  w-2 h-2"}`}></div>
+        <div className={`absolute bg-[#FFCC00] ${animateSpins["1"]} ${parentWidth > 310 ? "bottom-80 left-24 w-5 h-5" : "bottom-32 left-12  w-2 h-2"}`}></div>
+        <div className={`absolute bg-[#FFCC00] ${animateSpins["2"]} ${parentWidth > 310 ? "top-[34rem] left-16 w-5 h-5" : "top-36 left-24  w-2 h-2"}`}></div>
+        <div className={`absolute bg-[#FFCC00] ${animateSpins["1.5"]} ${parentWidth > 310 ? "bottom-[48rem] right-24 w-5 h-5" : "bottom-36 left-32 w-2 h-2"}`}></div>
+        <div className={`absolute bg-[#FFCC00] ${animateSpins["1.5"]} ${parentWidth > 310 ? "bottom-[40rem] left-64 w-10 h-5" : "bottom-40 right-8 w-5 h-2"}`}></div>
+        <div className={`absolute bg-[#FFCC00] ${animateSpins["2"]} ${parentWidth > 310 ? "bottom-96 right-48 w-10 h-5" : "bottom-12 left-36 w-5 h-2"}`}></div>
       </div>
     </section>
   )

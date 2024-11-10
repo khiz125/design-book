@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import InvitationCard from './InvitationCard';
 import AnimatedBorder from './AnimatedBorder';
-import UsingColors from './UsingColors';
+import UsingColors from './SplitComplimentTriad';
 import UnderConstruction from './UnderConstruction';
+import LoopSlider from './LoopSlider';
 
 type PageProps = {
   params: { id: string };
@@ -30,14 +31,19 @@ const Page: FC<PageProps> = ({ params }) => {
         <UsingColors />
       );
       break;
-      case 'under-construction':
+    case 'loop-slider':
         content = (
-          <UnderConstruction />
+          <LoopSlider />
         );
         break;
+    case 'under-construction':
+      content = (
+        <UnderConstruction />
+      );
+      break;
     default:
       content = (
-        <div className='flex items-center justify-center'>
+        <div className='flex items-center justify-center h-full'>
           <h1>Page Not Found</h1>
         </div>
       );

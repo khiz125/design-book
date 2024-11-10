@@ -22,7 +22,7 @@ const InvitationCard = () => {
     }
   }, []);
   return (
-    <section ref={ref} className={`w-full h-full`}>
+    <section ref={ref} className="w-full h-full">
       {parentWidth > 310 ? (
         <div className={`w-full`}>
           {FONTS.map((font, i) => (

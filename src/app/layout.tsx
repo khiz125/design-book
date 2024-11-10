@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="hidden-scrollbar">
       <body>
         <Sidebar />
         <main className="flex justify-center bg-gray-50 h-full ml-0 xs:ml-[60px] lg:ml-[140px] overflow-scroll">

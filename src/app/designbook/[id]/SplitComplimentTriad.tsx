@@ -4,7 +4,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { GridColorCodePreset } from '@/app/components/constants/colorParretPreset';
 import { useDebounce } from '@/utils/useDebounce';
 
-const UsingColors = () => {
+const SplitComplimentTriad = () => {
   /* local state */
   const [baseColor, setBaseColor] = useState("#e22400");
   const [firstSplited, setFirstSplited] = useState("");
@@ -71,7 +71,7 @@ const UsingColors = () => {
     }
   }, []);
   return (
-    <section ref={ref} className={`w-full h-full`}>
+    <section ref={ref} className="w-full h-full">
       {parentWidth > 310 ? (
         <div className='flex flex-col justify-center items-center'>
           <div className={`w-full`}>
@@ -83,10 +83,11 @@ const UsingColors = () => {
                 onClick={() => setBaseColor(color)}
               />
             ))}
-
           </div>
-          <div className='w-full flex justify-center'>
+          <div className='w-full flex justify-center items-center'>
+            <label htmlFor="color">base color: </label>
             <input
+              name="color"
               type="color"
               style={{ border: 'none' }}
               value={baseColor}
@@ -111,4 +112,4 @@ const UsingColors = () => {
   )
 }
 
-export default UsingColors;
+export default SplitComplimentTriad;

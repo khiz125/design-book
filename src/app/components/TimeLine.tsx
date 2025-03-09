@@ -1,50 +1,134 @@
 "use client";
 
-import React, { useLayoutEffect, useRef, useState } from 'react';
-import { FONTS } from "../components/constants/fonts";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import Image from "next/image";
+import { FONTS, Pokemon, POKEMON_DATA } from "../components/constants";
 
 const TimeLine = () => {
   const [parentWidth, setParentWidth] = useState(0);
+  const genTimeLineItems = useMemo<Pokemon[]>(() => {
+    const numbers = Array.from({ length: 12 }, (_, index) => index + 1);
+    return numbers.map(n => POKEMON_DATA[n]).filter(pokemon => pokemon);
+  }, []);
+  const [cards, setCards] = useState<Pokemon[]>(genTimeLineItems);
   const ref = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [visible, setVisible] = useState<boolean[]>(Array.from({ length: cards.length }, () => false));
+  console.log(visible)
+  const generateNewCards = (count: number): Pokemon[] => {
+    return Array.from({ length: count }, (_, i) => ({
+      ...genTimeLineItems[i % genTimeLineItems.length]
+    }))
+  };
+
+  const setRef = (index: number) => (el: HTMLDivElement | null) => {
+    cardRefs.current[index] = el;
+  }
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+        console.log(index)
+        if (index !== -1) {
+          if (entry.isIntersecting) {
+            setVisible(prev => {
+              const newVisible = [...prev];
+              newVisible[index] = true;
+              return newVisible;
+            })
+            if (index === cards.length - 1) {
+              setCards(prev => [...prev, ...generateNewCards(10)])
+            }
+          } else {
+            setVisible(prev => {
+              const newVisible = [...prev];
+              newVisible[index] = false;
+              return newVisible;
+            });
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    cardRefs.current.forEach((ref) => {
+      if (ref) {
+        observer.observe(ref);
+      }
+    });
+    return () => {
+      cardRefs.current.forEach((ref) => {
+        if (ref) {
+          observer.unobserve(ref);
+        }
+      })
+    }
+  }, [cards]);
   useLayoutEffect(() => {
     if (ref.current) {
-      console.log(ref.current.offsetWidth)
       setParentWidth(ref.current.offsetWidth);
     }
   }, []);
   return (
-    <div ref={ref} className={`w-full hidden-scrollbar`}>
-      <MessageBox parentWidth={parentWidth} />
-      <MessageBox parentWidth={parentWidth} />
-      <MessageBox parentWidth={parentWidth} />
+    <div ref={ref} className="w-full h-full flex flex-col justify-center bg-black">
+      <div className={`${parentWidth < 310 ? "h-72" : "h-2/3"} border rounded bg-white m-4 overflow-scroll hidden-scrollbar`}>
+        {cards.map((pokemon, i) => {
+          return (
+            <div key={i} ref={setRef(i)} className={`w-full px-14  ${visible[i] ? 'animate-slideIn' : 'animate-slideOut'}`}>
+              <div>hello: {visible[i] ? "yes" : "no"}</div>
+              <MessageBox parentWidth={parentWidth} pokemon={pokemon} />
+            </div>
+          );
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default TimeLine;
 
 type MessageBoxProps = {
-  parentWidth: number
-}
-const MessageBox: React.FC<MessageBoxProps> = ({ parentWidth }) => {
+  parentWidth: number;
+  pokemon: Pokemon;
+};
+const MessageBox: React.FC<MessageBoxProps> = ({ parentWidth, pokemon }) => {
   const fonts = FONTS;
   return (
-      <article className={`flex mt-2 ${parentWidth < 310 ? "h-20" : "h-[150px]"} px-2 justify-center border-b border-gray-300 ${fonts[11].font.className} font-${fonts[11].name}`}>
-        <div className="flex h-full">
-          <figure className={`${parentWidth < 310 ? "text-[10px] transform scale-50" : "max-w-1 mx-10 my-2"}`}>icon</figure>
-          <div className={`my-2 w-full ${parentWidth ? "h-20" : "h-[300px]"}`}>
-            <div className='flex items-center w-full'>
-              <p className={`${parentWidth < 310 ? "text-[10px] transform scale-50 origin-bottom" : "w-36"}`}>handle name</p>
-              <p className={`${parentWidth < 310 ? "text-[10px] transform scale-50 origin-bottom" : "w-24"}`}>time stamp</p>
-            </div>
-            <p className={`${parentWidth < 310 ? 
-              "text-[10px] transform scale-50 origin-top my-2 whitespace-pre-wrap line-clamp-2 truncate"
-              : "whitespace-pre-wrap line-clamp-3 truncate"}`}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea obcaecati doloribus numquam distinctio natus esse asperiores minus commodi quaerat! Itaque fugiat ab enim velit optio reprehenderit amet doloremque voluptatem temporibus?
+    <article
+      className={`flex mt-2 ${parentWidth < 310 ? "h-10" : "h-[120px]"} justify-center border border-gray-300 rounded ${fonts[11].font.className} font-${fonts[11].name}`}
+    >
+      <div className={`${parentWidth < 310 ? "" : "my-4"} flex mx-2`}>
+        <figure
+          className={`${parentWidth < 310 ? "text-[10px] transform scale-50" : "max-w-1 mx-10 my-2"}`}
+        >
+          <Image
+            src={pokemon.image}
+            alt="pokemon image"
+            height={100}
+            width={100}
+          />
+        </figure>
+        <div
+          className={`w-full flex flex-col ${parentWidth ? "h-full" : "h-[120px] mx-2"}`}
+        >
+          <div className={`flex items-center w-full ${parentWidth ? "h-full" : "h-[120px] mx-2"}`}>
+            <p
+              className={`${parentWidth < 310 ? "text-[10px]" : "w-36 font-bold text-xl text-gray-600"}`}
+            >
+              {pokemon.name}
             </p>
-            <figure className='flex justify-end w-full mt-2 pr-4'></figure>
+          </div>
+          <div className="w-full">
+            <p>
+              {parentWidth > 310 && pokemon.description}
+            </p>{" "}
           </div>
         </div>
-      </article>
-  )
-}
+      </div>
+    </article>
+  );
+};

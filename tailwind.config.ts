@@ -12,9 +12,31 @@ const config: Config = {
             transform: "rotate(360deg)",
           },
         },
+        slideIn: {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(60px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+        },
+        slideOut: {
+          "0%": {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateX(60px)",
+          },
+        },
       },
       animation: {
-        "border-spin": "border-spin 6s linear infinite"
+        "border-spin": "border-spin 6s linear infinite",
+        slideIn: "slideIn 0.2s ease-in forwards",
+        slideOut: "slideOut 0.2s ease-out forwards"
       },
       screens: {
         'xs': '580px',

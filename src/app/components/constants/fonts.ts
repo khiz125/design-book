@@ -15,76 +15,77 @@ import {
   alegreya,
   dancingScript,
   anton,
-  francoisOne
+  francoisOne,
 } from "../../../styles/fonts";
 
 export const FONTS = [
   {
     name: "inter",
-    font: inter
+    font: inter,
   },
   {
     name: "lora",
-    font: lora
+    font: lora,
   },
   {
     name: "newTegomin",
-    font: newTegomin
+    font: newTegomin,
   },
   {
     name: "ruluko",
-    font: ruluko
+    font: ruluko,
   },
   {
     name: "gentiumBookPlus",
-    font: gentiumBookPlus
+    font: gentiumBookPlus,
   },
   {
     name: "asset",
-    font: asset
+    font: asset,
   },
   {
     name: "mysteryQuest",
-    font: mysteryQuest
+    font: mysteryQuest,
   },
   {
     name: "stalemate",
-    font: stalemate
+    font: stalemate,
   },
   {
     name: "fontdinerSwanky",
-    font: fontdinerSwanky
+    font: fontdinerSwanky,
   },
   {
     name: "mcLaren",
-    font: mcLaren
+    font: mcLaren,
   },
   {
     name: "imFellEnglishSC",
-    font: imFellEnglishSC
+    font: imFellEnglishSC,
   },
   {
     name: "libreFranklin",
-    font: libreFranklin
+    font: libreFranklin,
   },
   {
     name: "merriweatherSans",
-    font: merriweatherSans
+    font: merriweatherSans,
   },
   {
     name: "alegreya",
-    font: alegreya
+    font: alegreya,
   },
   {
     name: "dancingScript",
-    font: dancingScript
+    font: dancingScript,
   },
   {
     name: "anton",
-    font: anton
+    font: anton,
   },
   {
     name: "francoisOne",
-    font: francoisOne
+    font: francoisOne,
   },
-]
+];
+

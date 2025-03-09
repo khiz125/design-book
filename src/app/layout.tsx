@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" className="hidden-scrollbar">
       <body>
         <Sidebar />
-        <main className="flex justify-center bg-gray-50 h-full ml-0 xs:ml-[60px] lg:ml-[140px] overflow-scroll">
+        <main className="flex justify-center bg-gray-50 h-full ml-0 xs:ml-[60px] lg:ml-[140px] overflow-scroll hidden-scrollbar">
           {children}
         </main>
         <Footer />

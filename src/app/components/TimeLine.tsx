@@ -30,41 +30,42 @@ const TimeLine = () => {
     cardRefs.current[index] = el;
   }
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
-        console.log(index)
-        if (index !== -1) {
-          if (entry.isIntersecting) {
-            setVisible(prev => {
-              const newVisible = [...prev];
-              newVisible[index] = true;
-              return newVisible;
-            })
-            if (index === cards.length - 1) {
-              setCards(prev => [...prev, ...generateNewCards(10)])
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (index !== -1) {
+            if (entry.isIntersecting) {
+              setVisible(prev => {
+                const newVisible = [...prev];
+                newVisible[index] = true;
+                return newVisible;
+              })
+              if (index === cards.length - 1) {
+                setCards(prev => [...prev, ...generateNewCards(10)])
+              }
+            } else {
+              setVisible(prev => {
+                const newVisible = [...prev];
+                newVisible[index] = false;
+                return newVisible;
+              });
             }
-          } else {
-            setVisible(prev => {
-              const newVisible = [...prev];
-              newVisible[index] = false;
-              return newVisible;
-            });
           }
-        }
-      });
-    }, { threshold: 0.5 });
-    cardRefs.current.forEach((ref) => {
-      if (ref) {
-        observer.observe(ref);
-      }
-    });
-    return () => {
+        });
+      }, { threshold: 0.5 });
       cardRefs.current.forEach((ref) => {
         if (ref) {
-          observer.unobserve(ref);
+          observer.observe(ref);
         }
-      })
+      });
+      return () => {
+        cardRefs.current.forEach((ref) => {
+          if (ref) {
+            observer.unobserve(ref);
+          }
+        })
+      }
     }
   }, [cards]);
   useLayoutEffect(() => {

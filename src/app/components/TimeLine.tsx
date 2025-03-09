@@ -20,7 +20,6 @@ const TimeLine = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [visible, setVisible] = useState<boolean[]>(Array.from({ length: cards.length }, () => false));
-  console.log(visible)
   const generateNewCards = (count: number): Pokemon[] => {
     return Array.from({ length: count }, (_, i) => ({
       ...genTimeLineItems[i % genTimeLineItems.length]

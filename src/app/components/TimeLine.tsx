@@ -79,7 +79,6 @@ const TimeLine = () => {
         {cards.map((pokemon, i) => {
           return (
             <div key={i} ref={setRef(i)} className={`w-full px-14  ${visible[i] ? 'animate-slideIn' : 'animate-slideOut'}`}>
-              <div>hello: {visible[i] ? "yes" : "no"}</div>
               <MessageBox parentWidth={parentWidth} pokemon={pokemon} />
             </div>
           );

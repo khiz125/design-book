@@ -143,7 +143,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ parentWidth, pokemon }) => {
             </p>
           </div>
           <div className="w-full">
-            <p>{parentWidth > 310 && pokemon.description}</p>{" "}
+            <p>{parentWidth > 310 && pokemon.description}</p>
           </div>
         </div>
       </div>

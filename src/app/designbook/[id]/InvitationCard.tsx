@@ -56,7 +56,7 @@ const InvitationCard = () => {
               : parentWidth > 310 && index === 5 ? "p-10 text-5xl leading-[10rem]"
               : parentWidth > 310 ? "p-10 text-8xl leading-[10rem]"
               : "px-3 text-[42px]"}`}>
-            It's <br />a <br />wild <br />tea <br />party!
+            It&apos;s <br />a <br />wild <br />tea <br />party!
           </p>
         </div>
         <div className={`absolute ${parentWidth > 310 ? "bottom-[30rem] right-24" : "bottom-12 right-8"}`}>

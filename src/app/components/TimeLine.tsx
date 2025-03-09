@@ -22,11 +22,13 @@ const TimeLine = () => {
   const [visible, setVisible] = useState<boolean[]>(
     Array.from({ length: cards.length }, () => false),
   );
-  const generateNewCards = (count: number): Pokemon[] => {
-    return Array.from({ length: count }, (_, i) => ({
-      ...genTimeLineItems[i % genTimeLineItems.length],
-    }));
-  };
+  const generateNewCards = useMemo(() => {
+    return (count: number) => {
+      return Array.from({ length: count }, (_, i) => ({
+        ...genTimeLineItems[i % genTimeLineItems.length],
+      }));
+    };
+  }, [genTimeLineItems]);
 
   const setRef = (index: number) => (el: HTMLDivElement | null) => {
     cardRefs.current[index] = el;
@@ -59,7 +61,7 @@ const TimeLine = () => {
             }
           });
         },
-        { threshold: 0.5 },
+        { threshold: 0.7 },
       );
       const currentRefs = cardRefs.current.slice();
       currentRefs.forEach((ref) => {
@@ -75,7 +77,7 @@ const TimeLine = () => {
         });
       };
     }
-  }, [cards]);
+  }, [cards, generateNewCards]);
   useLayoutEffect(() => {
     if (ref.current) {
       setParentWidth(ref.current.offsetWidth);

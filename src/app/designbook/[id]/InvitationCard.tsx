@@ -52,18 +52,18 @@ const InvitationCard = () => {
         </div>
         <div className="absolute top-4 left-10 bg-[#333] w-2/7 h-4/5 opacity-90">
           <p className={`
-            text-white ${parentWidth > 310 && index === 7 ? "p-10 text-[120px] tracking-wider"
-              : parentWidth > 310 && index === 5 ? "p-10 text-5xl leading-[10rem]"
-              : parentWidth > 310 ? "p-10 text-8xl leading-[10rem]"
-              : "px-3 text-[42px]"}`}>
+            text-white ${parentWidth > 500 && index === 5 ? "p-10 text-8xl leading-[10rem]"
+              : parentWidth > 500 ? "p-10 text-5xl leading-[10rem]" 
+              : parentWidth < 500 && index === 5 ? "px-3 text-[12px]"
+              : "px-3 text-[22px]"}`}>
             It&apos;s <br />a <br />wild <br />tea <br />party!
           </p>
         </div>
-        <div className={`absolute ${parentWidth > 310 ? "bottom-[30rem] right-24" : "bottom-12 right-8"}`}>
-          <p className={`text-white ${parentWidth > 310 && index === 7 ? "p-10 text-8xl" 
-            : parentWidth > 310 && index === 5 ? "p-10 text-2xl leading-[100px]" 
-            : parentWidth > 310 ? "p-10 text-5xl" 
-            : "px-3 text-[21px]"}`}>
+        <div className={`absolute ${parentWidth > 500 ? "bottom-[30rem] right-4" : "bottom-[22rem] right-8"}`}>
+          <p className={`text-white ${parentWidth > 500 && index === 5 ? "p-10 text-8xl"
+            : parentWidth > 500 ? "p-10 text-5xl leading-[100px]"
+            : parentWidth < 500 && index === 5 ? "px-3 text-[12px]"
+              : "px-3 text-[32px]"}`}>
             please join us <br />in the afternoon <br />wear your hat!
           </p>
         </div>

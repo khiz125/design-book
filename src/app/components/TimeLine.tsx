@@ -89,14 +89,14 @@ const TimeLine = () => {
       className="w-full h-full flex flex-col justify-center bg-black"
     >
       <div
-        className={`${parentWidth < 310 ? "h-72" : "h-2/3"} border rounded bg-white m-4 overflow-scroll hidden-scrollbar`}
+        className={`${parentWidth < 500 ? "h-96" : "h-2/3"} border rounded bg-white m-4 overflow-scroll hidden-scrollbar`}
       >
         {cards.map((pokemon, i) => {
           return (
             <div
               key={i}
               ref={setRef(i)}
-              className={`w-full px-14  ${visible[i] ? "animate-slideIn" : "animate-slideOut"}`}
+              className={`w-full ${parentWidth < 500 ? "px-2" : "px-14"} ${visible[i] ? "animate-slideIn" : "animate-slideOut"}`}
             >
               <MessageBox parentWidth={parentWidth} pokemon={pokemon} />
             </div>
@@ -117,11 +117,11 @@ const MessageBox: React.FC<MessageBoxProps> = ({ parentWidth, pokemon }) => {
   const fonts = FONTS;
   return (
     <article
-      className={`flex mt-2 ${parentWidth < 310 ? "h-10" : "h-[120px]"} justify-center border border-gray-300 rounded ${fonts[11].font.className} font-${fonts[11].name}`}
+      className={`flex mt-2 ${parentWidth < 500 ? "h-22" : "h-[120px]"} justify-center border border-gray-300 rounded ${fonts[11].font.className} font-${fonts[11].name}`}
     >
-      <div className={`${parentWidth < 310 ? "" : "my-4"} flex mx-2`}>
+      <div className={`flex ${parentWidth < 500 ? "" : "my-4 mx-2"}`}>
         <figure
-          className={`${parentWidth < 310 ? "text-[10px] transform scale-50" : "max-w-1 mx-10 my-2"}`}
+          className={`${parentWidth < 500 ? "transform scale-50" : "max-w-1 mx-10 my-2"}`}
         >
           <Image
             src={pokemon.image}
@@ -137,13 +137,13 @@ const MessageBox: React.FC<MessageBoxProps> = ({ parentWidth, pokemon }) => {
             className={`flex items-center w-full ${parentWidth ? "h-full" : "h-[120px] mx-2"}`}
           >
             <p
-              className={`${parentWidth < 310 ? "text-[10px]" : "w-36 font-bold text-xl text-gray-600"}`}
+              className={`${parentWidth < 500 ? "text-sm font-bold" : "w-36 font-bold text-xl text-gray-600"}`}
             >
               {pokemon.name}
             </p>
           </div>
-          <div className="w-full">
-            <p>{parentWidth > 310 && pokemon.description}</p>
+          <div className={`${parentWidth < 600 ? "text-xs" : parentWidth < 880 ? "text-xs" : ""} w-full`}>
+            <p>{parentWidth > 400 && pokemon.description}</p>
           </div>
         </div>
       </div>

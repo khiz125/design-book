@@ -86,7 +86,7 @@ const TimeLine = () => {
   return (
     <div
       ref={ref}
-      className="w-full h-full flex flex-col justify-center bg-black"
+      className="w-full h-full flex flex-col justify-center"
     >
       <div
         className={`${parentWidth < 500 ? "h-96" : "h-2/3"} border rounded bg-white m-4 overflow-scroll hidden-scrollbar`}

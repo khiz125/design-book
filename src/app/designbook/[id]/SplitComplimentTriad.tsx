@@ -6,13 +6,14 @@ import { useDebounce } from '@/utils/useDebounce';
 
 const SplitComplimentTriad = () => {
   /* local state */
-  const [baseColor, setBaseColor] = useState("#e22400");
-  const [firstSplited, setFirstSplited] = useState("");
-  const [secondSplited, setSecondSplited] = useState("");
+  const [baseColor, setBaseColor] = useState("#ff3366");
+  const [bgColor, setBgColer] = useState("#f0f8ff");
+  const [firstSplited, setFirstSplited] = useState("#ff9999");
+  const [secondSplited, setSecondSplited] = useState("#ff99cc");
   const [parentWidth, setParentWidth] = useState(0);
   const ref = useRef<HTMLDivElement | null>(null);
   const styles = {
-    map: 'relative bg-[#f0f8ff] mx-2 border border-gray-300 w-[80%] h-[60%] rounded-lg',
+    map: `relative mx-2 border border-gray-300 w-[80%] h-full rounded-lg`,
     hokkaido: 'absolute w-[10%] h-[16%] border border-gray-300 ' +
       '[clip-path:polygon(45%_33%,100%_79%,37%_100%,0%_71%)]', // 北海道
     honshu: 'absolute w-[12%] h-[20%] border border-gray-300 ' +
@@ -29,12 +30,15 @@ const SplitComplimentTriad = () => {
       '[clip-path:polygon(13%_13%,64%_17%,89%_37%,64%_100%,37%_54%,4%_45%)]',
   }
   /* functions */
-  const debouncedColor = useDebounce((newColor: string) => setBaseColor(newColor), 500);
+  const debouncedColor = useDebounce((newColor: string) => {
+    setBaseColor(newColor);
+    getSplitComplementaryColors(newColor);
+    setBgColer(getOppositeColor(newColor));
+  }, 500);
   const getSplitComplementaryColors = (baseColor: string) => {
     const hsl = hexToHSL(baseColor);
     const [fh, fs, fl] = [String((hsl[0] + 120) % 360), String(hsl[1]), String(hsl[2])];
     const [sh, ss, sl] = [String((hsl[0] + 240) % 360), String(hsl[1]), String(hsl[2])];
-
     setFirstSplited(`hsl(${fh},${fs}%,${fl}%)`);
     setSecondSplited(`hsl(${sh},${ss}%,${sl}%)`);
   }
@@ -42,13 +46,11 @@ const SplitComplimentTriad = () => {
     let r = parseInt(hex.slice(1, 3), 16) / 255;
     let g = parseInt(hex.slice(3, 5), 16) / 255;
     let b = parseInt(hex.slice(5, 7), 16) / 255;
-
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
     let h: number = 0, s: number = 0, l = (max + min) / 2;
-
     if (max === min) {
-      h = s = 0; // achromatic
+      h = s = 0;
     } else {
       const d = max - min;
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
@@ -61,29 +63,54 @@ const SplitComplimentTriad = () => {
     }
     return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
   }
-  /* processing */
-  useEffect(() => {
-    getSplitComplementaryColors(baseColor);
-  }, [baseColor])
+  const isLightColor = (color: string): boolean => {
+    const hexToRgb = (hex: string) => {
+      const bigint = parseInt(hex.slice(1), 16);
+      return {
+        r: (bigint >> 16) & 255,
+        g: (bigint >> 8) & 255,
+        b: bigint & 255,
+      };
+    };
+    const rgb = hexToRgb(color);
+    const { r, g, b } = rgb;
+    const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+    return brightness > 186;
+  };
+  const getOppositeColor = (color: string): string => {
+    const hexToRgb = (hex: string) => {
+      const bigint = parseInt(hex.slice(1), 16);
+      return {
+        r: (bigint >> 16) & 255,
+        g: (bigint >> 8) & 255,
+        b: bigint & 255,
+      };
+    };
+    const rgb = hexToRgb(color);
+    const { r, g, b } = rgb;
+    if (isLightColor(color)) {
+      return `#${((1 << 24) + (255 - r << 16) + (255 - g << 8) + (255 - b)).toString(16).slice(1)}`;
+    } else {
+      const newR = Math.min(255, Math.round(r + (255 - r) * 0.5));
+      const newG = Math.min(255, Math.round(g + (255 - g) * 0.5));
+      const newB = Math.min(255, Math.round(b + (255 - b) * 0.5));
+      return `#${((1 << 24) + (newR << 16) + (newG << 8) + newB).toString(16).slice(1)}`;
+    }
+  };
+  const handleSelectColor = (color: string) => {
+    setBaseColor(color);
+    getSplitComplementaryColors(color);
+    setBgColer(getOppositeColor(color));
+  }
   useLayoutEffect(() => {
     if (ref.current) {
       setParentWidth(ref.current.offsetWidth);
     }
   }, []);
   return (
-    <section ref={ref} className="w-full h-full">
+    <section ref={ref} className="flex flex-col items-center my-10 w-full h-screen">
       {parentWidth > 310 ? (
         <div className='flex flex-col justify-center items-center'>
-          <div className={`w-full`}>
-            {GridColorCodePreset.map((color, i) => (
-              <button
-                key={i}
-                style={{ backgroundColor: color }}
-                className={`py-2 px-3 m-2 border border-gray-300`}
-                onClick={() => setBaseColor(color)}
-              />
-            ))}
-          </div>
           <div className='w-full flex justify-center items-center'>
             <label htmlFor="color">base color: </label>
             <input
@@ -97,8 +124,8 @@ const SplitComplimentTriad = () => {
           </div>
         </div>
       ) : <></>}
-      <div className={`flex justify-center ${parentWidth < 310 && "items-center"} w-full h-full`}>
-        <div className={`${styles.map}`}>
+      <div style={{ height: `${parentWidth > 310 ? "calc(100vh - 420px)" : "15%"}` }} className={`flex justify-center my-10 ${parentWidth < 310 && "items-center"} w-full`}>
+        <div style={{ backgroundColor: bgColor }} className={`${styles.map}`}>
           <div className={styles.hokkaido} style={{ top: '30%', left: '50%', backgroundColor: baseColor }}></div>
           <div className={styles.honshu} style={{ top: '45%', left: '45%', backgroundColor: baseColor }}></div>
           <div className={styles.kyushu} style={{ top: '60%', left: '38%', backgroundColor: baseColor }}></div>
@@ -108,6 +135,20 @@ const SplitComplimentTriad = () => {
           <div className={styles.southAmerica} style={{ top: '40%', left: '70%', backgroundColor: secondSplited }}></div>
         </div>
       </div>
+      {parentWidth > 310 ? (
+        <div className='flex flex-col justify-center items-center'>
+          <div className={`w-full`}>
+            {GridColorCodePreset.map((color, i) => (
+              <button
+                key={i}
+                style={{ backgroundColor: color }}
+                className={`py-2 px-3 m-2 border border-gray-300`}
+                onClick={() => handleSelectColor(color)}
+              />
+            ))}
+          </div>
+        </div>
+      ) : <></>}
     </section>
   )
 }

@@ -12,7 +12,7 @@ const SplitComplimentTriad = () => {
   const [parentWidth, setParentWidth] = useState(0);
   const ref = useRef<HTMLDivElement | null>(null);
   const styles = {
-    map: 'relative bg-[#f0f8ff] mx-2 border border-gray-300 w-[80%] h-[60%] rounded-lg',
+    map: 'relative bg-[#f0f8ff] mx-2 border border-gray-300 w-[80%] h-full rounded-lg',
     hokkaido: 'absolute w-[10%] h-[16%] border border-gray-300 ' +
       '[clip-path:polygon(45%_33%,100%_79%,37%_100%,0%_71%)]', // 北海道
     honshu: 'absolute w-[12%] h-[20%] border border-gray-300 ' +
@@ -71,19 +71,9 @@ const SplitComplimentTriad = () => {
     }
   }, []);
   return (
-    <section ref={ref} className="w-full h-full">
+    <section ref={ref} className="flex flex-col items-center my-10 w-full h-screen">
       {parentWidth > 310 ? (
         <div className='flex flex-col justify-center items-center'>
-          <div className={`w-full`}>
-            {GridColorCodePreset.map((color, i) => (
-              <button
-                key={i}
-                style={{ backgroundColor: color }}
-                className={`py-2 px-3 m-2 border border-gray-300`}
-                onClick={() => setBaseColor(color)}
-              />
-            ))}
-          </div>
           <div className='w-full flex justify-center items-center'>
             <label htmlFor="color">base color: </label>
             <input
@@ -97,7 +87,7 @@ const SplitComplimentTriad = () => {
           </div>
         </div>
       ) : <></>}
-      <div className={`flex justify-center ${parentWidth < 310 && "items-center"} w-full h-full`}>
+      <div style={{ height: `${parentWidth > 310 ? "calc(100vh - 420px)" : "15%"}` }} className={`flex justify-center my-10 ${parentWidth < 310 && "items-center"} w-full`}>
         <div className={`${styles.map}`}>
           <div className={styles.hokkaido} style={{ top: '30%', left: '50%', backgroundColor: baseColor }}></div>
           <div className={styles.honshu} style={{ top: '45%', left: '45%', backgroundColor: baseColor }}></div>
@@ -108,6 +98,20 @@ const SplitComplimentTriad = () => {
           <div className={styles.southAmerica} style={{ top: '40%', left: '70%', backgroundColor: secondSplited }}></div>
         </div>
       </div>
+      {parentWidth > 310 ? (
+        <div className='flex flex-col justify-center items-center'>
+          <div className={`w-full`}>
+            {GridColorCodePreset.map((color, i) => (
+              <button
+                key={i}
+                style={{ backgroundColor: color }}
+                className={`py-2 px-3 m-2 border border-gray-300`}
+                onClick={() => setBaseColor(color)}
+              />
+            ))}
+          </div>
+        </div>
+      ) : <></>}
     </section>
   )
 }

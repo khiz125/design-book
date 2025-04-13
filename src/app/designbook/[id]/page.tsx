@@ -3,7 +3,8 @@ import InvitationCard from './InvitationCard';
 import AnimatedBorder from './AnimatedBorder';
 import UsingColors from './SplitComplimentTriad';
 import UnderConstruction from './UnderConstruction';
-import LoopSlider from './LoopSlider';
+import InfinityLoop from './InfinityLoop';
+import SmoothScroll from './SmoothScroll';
 
 type PageProps = {
   params: { id: string };
@@ -32,10 +33,15 @@ const Page: FC<PageProps> = ({ params }) => {
       );
       break;
     case 'loop-slider':
-        content = (
-          <LoopSlider />
-        );
-        break;
+      content = (
+        <InfinityLoop />
+      );
+      break;
+    case 'smooth-scroll':
+      content = (
+        <SmoothScroll />
+      );
+      break;
     case 'under-construction':
       content = (
         <UnderConstruction />

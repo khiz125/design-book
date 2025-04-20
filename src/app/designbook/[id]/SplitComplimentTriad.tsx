@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { GridColorCodePreset } from '@/app/components/constants/colorParretPreset';
 import { useDebounce } from '@/utils/useDebounce';
 

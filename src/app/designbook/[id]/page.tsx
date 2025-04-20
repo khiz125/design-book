@@ -3,16 +3,16 @@ import InvitationCard from './InvitationCard';
 import AnimatedBorder from './AnimatedBorder';
 import UsingColors from './SplitComplimentTriad';
 import UnderConstruction from './UnderConstruction';
-import LoopSlider from './LoopSlider';
+import InfinityLoop from './InfinityLoop';
+import SmoothScroll from './SmoothScroll';
 
 type PageProps = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>;
 }
 
 
-const Page: FC<PageProps> = ({ params }) => {
-  const { id } = params;
+const Page: FC<PageProps> = async({ params }) => {
+  const { id } = await params;
 
   let content;
   switch (id) {
@@ -32,10 +32,15 @@ const Page: FC<PageProps> = ({ params }) => {
       );
       break;
     case 'loop-slider':
-        content = (
-          <LoopSlider />
-        );
-        break;
+      content = (
+        <InfinityLoop />
+      );
+      break;
+    case 'smooth-scroll':
+      content = (
+        <SmoothScroll />
+      );
+      break;
     case 'under-construction':
       content = (
         <UnderConstruction />

@@ -3,9 +3,12 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { PICTURES } from "@/app/components/constants/picture";
+import { createPortal } from "react-dom";
 
 const SmoothScroll: React.FC = () => {
   const [parentWidth, setParentWidth] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
   const ref = useRef<HTMLDivElement | null>(null);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const refs: { [key: string]: React.RefObject<HTMLHeadingElement> } = {
@@ -32,6 +35,15 @@ const SmoothScroll: React.FC = () => {
         behavior: "smooth",
       });
     }
+  };
+  const handleOpenImage = (image: string) => {
+    if (parentWidth < 310) return;
+    setOpenModal(true);
+    setSelectedImage(image);
+  };
+  const handleCloseImage = () => {
+    setOpenModal(false);
+    setSelectedImage("");
   };
   useLayoutEffect(() => {
     if (ref.current) {
@@ -78,20 +90,45 @@ const SmoothScroll: React.FC = () => {
             >
               {picture.images.map((image) => (
                 <React.Fragment key={image}>
-                  <div>
-                    <figure
-                      className="relative overflow-hidden w-64 h-40"
-                      key={image}
-                    >
+                  <div
+                    onClick={() => handleOpenImage(image)}
+                    className="hover:cursor-pointer"
+                  >
+                    <figure className="relative overflow-hidden w-64 h-40">
                       <Image
                         src={image}
                         alt=""
-                        unoptimized
                         className="object-cover"
+                        unoptimized
                         fill
                       />
                     </figure>
                   </div>
+                  {parentWidth > 310 &&
+                    openModal &&
+                    createPortal(
+                      <div
+                        style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                        className="fixed inset-0  flex justify-center items-center"
+                      >
+                        <figure className="px-10">
+                          <Image
+                            src={selectedImage}
+                            alt=""
+                            className="object-contain rounded"
+                            width={1200}
+                            height={600}
+                          />
+                        </figure>
+                        <button
+                          className="fixed top-4 right-4 text-black text-4xl"
+                          onClick={handleCloseImage}
+                        >
+                          ×
+                        </button>
+                      </div>,
+                      document.body
+                    )}
                 </React.Fragment>
               ))}
             </div>

@@ -17,6 +17,6 @@ export const PAGE_CONTENTS:PageContents[] = [
 	{ id: "animated-border", title: "Animated Border", component: <AnimatedBorder /> },
 	{ id: "using-colors", title: "Split complement triad", component: <SplitComplimentTriad /> },
   { id: "loop-slider", title: "Loop Slider", component: <InfinityLoop /> },
-  { id: "smooth-scroll", title: "Under Construction...", component: <SmoothScroll /> },
-  { id: "under-construction", title: "Smooth scrolling", component: <UnderConstruction /> },
+  { id: "smooth-scroll", title: "Smooth scrolling", component: <SmoothScroll /> },
+  { id: "under-construction", title: "Under Construction...", component: <UnderConstruction /> },
 ];

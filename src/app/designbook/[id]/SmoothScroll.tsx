@@ -73,7 +73,7 @@ const SmoothScroll: React.FC = () => {
     };
   }, [throttledResize]);
   return (
-    <div ref={ref} className="p-10 relative h-full overflow-scroll">
+    <div ref={ref} className="p-10 relative h-full overflow-y-scroll">
       {parentWidth > 310 && (
         <section ref={headerRef} className="w-full">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 items-center my-5 gap-4">
@@ -153,14 +153,16 @@ const SmoothScroll: React.FC = () => {
           </div>
         ))}
       </section>
-      <button
-        onClick={() => handleBackToTop(headerRef)}
-        className={`fixed bg-white w-28 bottom-1 right-1 ${
-          windowWidth > 580 ? "" : "my-16"
-        } text-center border border-gray-400 hover:bg-gray-200 duration-200 rounded`}
-      >
-        back to top
-      </button>
+      {parentWidth > 310 && (
+        <button
+          onClick={() => handleBackToTop(headerRef)}
+          className={`fixed bg-white w-28 bottom-1 right-1 ${
+            windowWidth > 580 ? "" : "my-16"
+          } text-center border border-gray-400 hover:bg-gray-200 duration-200 rounded`}
+        >
+          back to top
+        </button>
+      )}
     </div>
   );
 };

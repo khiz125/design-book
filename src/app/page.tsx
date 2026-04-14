@@ -12,10 +12,10 @@ const Home = () => {
           hello world
         </div>
         <div className="mx-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 min-[2000px]:grid-cols-5 gap-5 justify-center ">
-          <div>
+          {/* <div>
             <SentimentAnalyzer />
             <p className="mt-2 text-center">Sentiment Analyzer</p>
-          </div>
+          </div> */}
           {PAGE_CONTENTS.map((page, i) => (
             <div
               key={i}
